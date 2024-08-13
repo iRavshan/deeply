@@ -1,0 +1,90 @@
+{% extends '../common/base.html' %}
+{% block title %} {{topic.title}} {% endblock %}
+{% block content %}
+{% load i18n %}
+<!DOCTYPE html>
+{% load static %}
+<section class="ud-blog-details">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="course-menu">
+          <div>
+            <div class="course-title">
+              <h1 itemprop="about">{{course.title}}</h1>
+            </div>
+            <ul class="course-menu-list">
+              <h5 class="course-submenu">
+                Supervised Learning
+              </h5>
+              {% if topics %}
+              {% for topic in topics %}
+              <li class="course-menu-item">
+                {% if topic.id == current_topic.id %}
+                <a href="{% url 'topic' course.slug topic.slug %}" class="active">
+                  {% if user.is_authenticated %}
+                    {% if topic.is_completed %}
+                    <i class="lni lni-checkmark-circle"></i>
+                    {% else %} 
+                    <i class="lni lni-spinner-solid"></i>
+                    {% endif %}
+                  {% endif %}
+                  {{topic.title|slice:":30"}}...
+                </a>
+                {% else %}
+                <a href="{% url 'topic' course.slug topic.slug %}">
+                  {% if user.is_authenticated %}
+                    {% if topic.is_completed %}
+                    <i class="lni lni-checkmark-circle"></i>
+                    {% else %} 
+                    <i class="lni lni-spinner-solid"></i>
+                    {% endif %}
+                  {% endif %}
+                  {{topic.title|slice:":30"}}...
+                </a>
+                {% endif %}
+              </li>
+              {% endfor %}
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <article itemscope class="ud-blog-details-content">
+          <h1 itemprop="headline">
+            {{current_topic.title}}
+          </h1>
+          <div itemscope itemprop="articleBody">
+            {{current_topic.content|safe}}
+          </div>
+        </article>
+        <div class="previous-next-section">
+          {% if previous_topic_slug %}
+          <a href="{% url 'topic' course.slug  previous_topic_slug %}" class="ud-main-btn"><i class="lni lni-chevron-left"></i> {% trans "Orqaga" %}</a>
+          {% else %}
+          <a href="{% url 'topic' course.slug  current_topic.slug %}" class="ud-main-btn"><i class="lni lni-chevron-left"></i> {% trans "Orqaga" %}</a>
+          {% endif %}
+          {% if next_topic_slug %}
+          <a href="{% url 'topic' course.slug  next_topic_slug %}" class="ud-main-btn">{% trans "Keyingisi" %} <i class="lni lni-chevron-right"></i></a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <div class="course-attachments">
+          <ul>
+            <li><a href="#"><i class="fas fa-file-pdf"></i> PDF <i class="lni lni-arrow-top-right"></i></a></li>
+            {% if current_topic.github_url %}
+            <li><a href="{{current_topic.github_url}}" target="_blank"><i class="fab fa-github"></i> Github <i class="lni lni-arrow-top-right"></i></a></li>
+            {% endif %}
+            {% if current_topic.notebook_url %}
+            <li><a href="{{current_topic.notebook_url}}" target="_blank"><i class="far fa-file-code"></i> Notebook <i class="lni lni-arrow-top-right"></i></a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    
+{% endblock content %}

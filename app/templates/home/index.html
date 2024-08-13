@@ -1,0 +1,348 @@
+{% extends '../common/base.html' %}
+{% block title %} Bosh sahifa {% endblock %}
+{% block content %}
+{% load i18n %}
+<!DOCTYPE html>
+{% load static %}
+<section class="ud-hero" id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ud-hero-content">
+          <h1 class="ud-hero-title">
+            {% trans "Bugun nimani o'rganmoqchisiz?" %}
+          </h1>
+          <form action="" class="ud-hero-search-form">
+            <input type="text" class="ud-hero-search-input" placeholder="{% trans "Sun'iy intellekt haqida barcha narsa" %}">
+            <button class="ud-search-btn" type="submit">
+              <i class="lni lni-search"></i>
+            </button>
+          </form>
+          <ul class="ud-hero-buttons">
+            <li>
+              <a href="https://github.com/uideck/play-bootstrap" rel="nofollow noopener" target="_blank" class="ud-main-btn ud-link-btn">
+                {% trans "Qayerdan boshlashni bilmayabsizmi?" %}
+              </a>
+            </li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section id="aiml" class="course">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ud-section-title">
+          <span class="tag">Explore</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center justify-content-center">
+      <div class="col-lg-4 col-md-6 col-sm-10">
+        <div class="ud-single-pricing first-item wow fadeInUp" data-wow-delay=".15s">
+          <div class="single-course">
+            <div class="course-image">
+            </div>
+            <div class="course-body">
+              <div class="ud-pricing-header">
+                <h4>Data Science</h4>
+              </div>
+              <div class="course-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                  {% trans "Batafsil" %} <i class="lni lni-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-10">
+        <div class="ud-single-pricing first-item wow fadeInUp" data-wow-delay=".15s">
+          <div class="single-course">
+            <div class="course-image">
+            </div>
+            <div class="course-body">
+              <div class="ud-pricing-header">
+                <h4>Machine Learning</h4>
+              </div>
+              <div class="course-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                  {% trans "Batafsil" %} <i class="lni lni-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-10">
+        <div class="ud-single-pricing first-item wow fadeInUp" data-wow-delay=".15s">
+          <div class="single-course">
+            <div class="course-image">
+            </div>
+            <div class="course-body">
+              <div class="ud-pricing-header">
+                <h4>Deep Learning</h4>
+              </div>
+              <div class="course-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                  {% trans "Batafsil" %} <i class="lni lni-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-10">
+        <div class="ud-single-pricing first-item wow fadeInUp" data-wow-delay=".15s">
+          <div class="single-course">
+            <div class="course-image">
+            </div>
+            <div class="course-body">
+              <div class="ud-pricing-header">
+                <h4>NLP</h4>
+              </div>
+              <div class="course-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                  {% trans "Batafsil" %} <i class="lni lni-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-10">
+        <div class="ud-single-pricing first-item wow fadeInUp" data-wow-delay=".15s">
+          <div class="single-course">
+            <div class="course-image">
+            </div>
+            <div class="course-body">
+              <div class="ud-pricing-header">
+                <h4>Computer Vision</h4>
+              </div>
+              <div class="course-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                  {% trans "Batafsil" %} <i class="lni lni-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-10">
+        <div class="ud-single-pricing first-item wow fadeInUp" data-wow-delay=".15s">
+          <div class="single-course">
+            <div class="course-image">
+            </div>
+            <div class="course-body">
+              <div class="ud-pricing-header">
+                <h4>LLMs</h4>
+              </div>
+              <div class="course-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                  {% trans "Batafsil" %} <i class="lni lni-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="basic" class="course">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ud-section-title">
+          <span class="tag">Basic</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center justify-content-center">
+      <div class="col-lg-4 col-md-6 col-sm-10">
+        <div class="ud-single-pricing first-item wow fadeInUp" data-wow-delay=".15s">
+          <div class="single-course">
+            <div class="course-image">
+            </div>
+            <div class="course-body">
+              <div class="ud-pricing-header">
+                <h4>Python</h4>
+              </div>
+              <div class="course-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                  {% trans "Batafsil" %} <i class="lni lni-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-10">
+        <div class="ud-single-pricing first-item wow fadeInUp" data-wow-delay=".15s">
+          <div class="single-course">
+            <div class="course-image">
+            </div>
+            <div class="course-body">
+              <div class="ud-pricing-header">
+                <h4>NumPy</h4>
+              </div>
+              <div class="course-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                  {% trans "Batafsil" %} <i class="lni lni-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-10">
+        <div class="ud-single-pricing first-item wow fadeInUp" data-wow-delay=".15s">
+          <div class="single-course">
+            <div class="course-image">
+            </div>
+            <div class="course-body">
+              <div class="ud-pricing-header">
+                <h4>Pandas</h4>
+              </div>
+              <div class="course-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                  {% trans "Batafsil" %} <i class="lni lni-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-10">
+        <div class="ud-single-pricing first-item wow fadeInUp" data-wow-delay=".15s">
+          <div class="single-course">
+            <div class="course-image">
+            </div>
+            <div class="course-body">
+              <div class="ud-pricing-header">
+                <h4>SciPy</h4>
+              </div>
+              <div class="course-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                  {% trans "Batafsil" %} <i class="lni lni-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-10">
+        <div class="ud-single-pricing first-item wow fadeInUp" data-wow-delay=".15s">
+          <div class="single-course">
+            <div class="course-image">
+            </div>
+            <div class="course-body">
+              <div class="ud-pricing-header">
+                <h4>Matplotlib</h4>
+              </div>
+              <div class="course-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                  {% trans "Batafsil" %} <i class="lni lni-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-10">
+        <div class="ud-single-pricing first-item wow fadeInUp" data-wow-delay=".15s">
+          <div class="single-course">
+            <div class="course-image">
+            </div>
+            <div class="course-body">
+              <div class="ud-pricing-header">
+                <h4>Seaborn</h4>
+              </div>
+              <div class="course-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                  {% trans "Batafsil" %} <i class="lni lni-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="math" class="course">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ud-section-title">
+          <span class="tag">{% trans "Matematika" %}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center justify-content-center">
+      <div class="col-lg-4 col-md-6 col-sm-10">
+        <div class="ud-single-pricing first-item wow fadeInUp" data-wow-delay=".15s">
+          <div class="single-course">
+            <div class="course-image">
+            </div>
+            <div class="course-body">
+              <div class="ud-pricing-header">
+                <h4>Machine Learning uchun chiziqli algebra</h4>
+              </div>
+              <div class="course-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                  {% trans "Batafsil" %} <i class="lni lni-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-10">
+        <div class="ud-single-pricing first-item wow fadeInUp" data-wow-delay=".15s">
+          <div class="single-course">
+            <div class="course-image">
+            </div>
+            <div class="course-body">
+              <div class="ud-pricing-header">
+                <h4>Statistika va ehtimollar nazariyasi</h4>
+              </div>
+              <div class="course-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                  {% trans "Batafsil" %} <i class="lni lni-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-10">
+        <div class="ud-single-pricing first-item wow fadeInUp" data-wow-delay=".15s">
+          <div class="single-course">
+            <div class="course-image">
+            </div>
+            <div class="course-body">
+              <div class="ud-pricing-header">
+                <h4>Matematik analiz asoslari</h4>
+              </div>
+              <div class="course-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                  {% trans "Batafsil" %} <i class="lni lni-chevron-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>    
+
+{% endblock content %}

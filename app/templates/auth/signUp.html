@@ -1,0 +1,64 @@
+{% extends '../common/blank.html' %}
+{% block title %} Ro'yxatdan o'tish {% endblock %}
+{% block content %}
+{% load i18n %}
+<!DOCTYPE html>
+{% load static %}
+<section class="ud-login">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ud-login-wrapper">
+          <div class="ud-login-logo">
+            <img src="{% static '/images/logo/logo-2.svg' %}" alt="logo" />
+          </div>
+          <form class="ud-login-form" method="post" action="{% url 'signUp' %}">
+            {% csrf_token %}
+            {% for field in form %}
+            {% if field.field.widget.input_type != "radio" %}
+              {% if field.field.widget.input_type == "checkbox" %}
+              <div class="ud-form-group ud-form-checkbox">
+                {{ field }}
+                <label for="receive_email">{{ field.label }}</label>
+              </div>
+              {% else %}
+              <div class="ud-form-group">
+                {{ field }}
+              </div>
+              {% endif %}
+            {% endif %}
+            {% endfor %}
+            <div class="ud-form-group">
+              <button type="submit" class="ud-main-btn w-100">{% trans "Ro'yxatdan o'ting" %}</button>
+            </div>
+          </form>
+          <div class="ud-socials-connect">
+            <p>{% trans "yoki" %}</p>
+            <ul>
+              <li>
+                <a href="javascript:void(0)" class="facebook">
+                  <i class="lni lni-linkedin-original"></i>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" class="twitter">
+                  <i class="lni lni-telegram-original"></i>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" class="google">
+                  <i class="lni lni-google"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <p class="signup-option">
+            {% trans "Hisobingiz mavjudmi?" %} <a href="{% url 'signIn' %}">{% trans "Kirish" %}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+

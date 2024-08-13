@@ -1,0 +1,13 @@
+SignIn va SignUp pagelarda messagelar qo'shish
+Topic page da topiclarni Unitlari bilan birga chiqarish
+Tilni tanlash uchun header da dropdown qo'shish
+Subnavbar uchun horizontal scrolling qo'shish
+Converting topic into a pdf file
+SEO optimizatsiya
+
+Secondary:
+    0. Testing
+    0. Night mode 
+    1. Frontend frameworkini ulash
+    2. Caching
+    3. Elasticsearch integratsiya
