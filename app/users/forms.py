@@ -22,7 +22,7 @@ class UserSignUpForm(UserCreationForm):
 
     class Meta:
         model = CustomUser
-        fields = ['full_name', 'email', 'password1', 'password2', 'receive_email']
+        fields = ['email', 'password1', 'password2', 'receive_email']
 
 
 

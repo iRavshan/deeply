@@ -1,4 +1,3 @@
-SignIn va SignUp pagelarda messagelar qo'shish
 Topic page da topiclarni Unitlari bilan birga chiqarish
 Tilni tanlash uchun header da dropdown qo'shish
 Subnavbar uchun horizontal scrolling qo'shish

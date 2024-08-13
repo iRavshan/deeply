@@ -6,26 +6,23 @@ from .forms import UserSignUpForm, UserSignInForm
 
 
 def sign_up(request):
-    context = {}
     if request.method == 'POST':
         form = UserSignUpForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
             password = form.cleaned_data['password1']
-            instance = form.save(commit=False)
-            instance.username = email
-            instance.save()
-            user = authenticate(request, username=email, password=password)
+            form.save()
+            user = authenticate(request, email=email, password=password)
             if user:
                 login(request, user)
                 return redirect('home')
-    context['form'] = UserSignUpForm() 
-    return render(request, 'auth/signUp.html', context)
+    else:
+        form = UserSignUpForm()
+    return render(request, 'auth/signUp.html', {'form': form})
 
 
 
 def sign_in(request):
-    context = {}
     if request.method == 'POST':
         form = UserSignInForm(request.POST)
         if form.is_valid():
@@ -35,8 +32,9 @@ def sign_in(request):
             if user:
                 login(request, user)
                 return redirect('home')
-    context['form'] = UserSignInForm()
-    return render(request, 'auth/signIn.html', context)
+    else:
+        form = UserSignInForm()
+    return render(request, 'auth/signIn.html', {'form': form})
 
 
 

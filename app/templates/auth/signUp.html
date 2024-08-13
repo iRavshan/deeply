@@ -15,19 +15,31 @@
           <form class="ud-login-form" method="post" action="{% url 'signUp' %}">
             {% csrf_token %}
             {% for field in form %}
-            {% if field.field.widget.input_type != "radio" %}
-              {% if field.field.widget.input_type == "checkbox" %}
-              <div class="ud-form-group ud-form-checkbox">
-                {{ field }}
-                <label for="receive_email">{{ field.label }}</label>
-              </div>
-              {% else %}
-              <div class="ud-form-group">
-                {{ field }}
-              </div>
+              {% if field.field.widget.input_type != "radio" %}
+                {% if field.field.widget.input_type == "checkbox" %}
+                <div class="ud-form-group ud-form-checkbox">
+                  {{ field }}
+                  <label for="receive_email">{{ field.label }}</label>
+                </div>
+                {% else %}
+                <div class="ud-form-group">
+                  {{ field }}
+                  {% if field.errors %}
+                    <div class="alert alert-danger">
+                        {% for error in field.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+                {% endif %}
               {% endif %}
-            {% endif %}
             {% endfor %}
+            {% if form.non_field_errors %}
+              <div class="alert alert-danger">
+                  {{ form.non_field_errors }}
+              </div>
+            {% endif %}
             <div class="ud-form-group">
               <button type="submit" class="ud-main-btn w-100">{% trans "Ro'yxatdan o'ting" %}</button>
             </div>

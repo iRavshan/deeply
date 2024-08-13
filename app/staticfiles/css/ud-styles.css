@@ -471,6 +471,10 @@ p {
   color: var(--heading-color);
 }
 
+.navbar-btn .dropdown{
+  display: inline-block;
+}
+
 .sticky .navbar-toggler .toggler-icon {
   background-color: var(--heading-color);
 }
@@ -1805,7 +1809,9 @@ p {
   margin-bottom: 25px;
 }
 
-.ud-login-form .ud-form-group input {
+.ud-login-form .ud-form-group input[type=password], 
+.ud-login-form .ud-form-group input[type=text],
+.ud-login-form .ud-form-group input[type=email] {
   width: 100%;
   border: 2px solid #dddddd;
   border-radius: 4px;
@@ -1816,6 +1822,22 @@ p {
 
 .ud-login-form .ud-form-group input:focus {
   border-color: var(--primary-color);
+}
+
+.ud-form-group.ud-form-checkbox{
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.ud-form-group.ud-form-checkbox input[type=checkbox]{
+  margin-right: 15px;
+  padding: 7px;
+}
+
+.ud-form-group.ud-form-checkbox label{
+  font-size: 13px;
+  text-align: left;
 }
 
 .ud-socials-connect {
@@ -2585,7 +2607,7 @@ p {
   text-decoration: underline;
 }
 
-.course-attachments ul li a i.lni-arrow-top-right{
+.course-attachments ul li a i{
   font-size: 10px;
 }
 
