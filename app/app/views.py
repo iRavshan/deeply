@@ -15,3 +15,11 @@ def error_404(request, exception):
 def error_500(request):
     content = loader.render_to_string('home/500.html', {}, request)
     return HttpResponseServerError(content)
+
+def error_403(request, exception):
+    content = loader.render_to_string('home/500.html', {}, request)
+    return HttpResponseServerError(content)
+
+def error_400(request, exception):
+    content = loader.render_to_string('home/500.html', {}, request)
+    return HttpResponseServerError(content)

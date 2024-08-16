@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from . import views
 
 urlpatterns = i18n_patterns(
-    path(_('admin/'), admin.site.urls),
+    path(_('adminim/'), admin.site.urls),
     path(_('courses/'), include('courses.urls')),
     path(_('blog/'), include('blog.urls')),
     path(_('user/'), include('users.urls')),
@@ -15,3 +15,5 @@ urlpatterns = i18n_patterns(
 
 handler404 = views.error_404
 handler500 = views.error_500
+handler403 = views.error_403
+handler400 = views.error_400
