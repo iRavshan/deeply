@@ -7,8 +7,10 @@ from . import views
 urlpatterns = i18n_patterns(
     path(_('admin/'), admin.site.urls),
     path(_('courses/'), include('courses.urls')),
+    path(_('blog/'), include('blog.urls')),
     path(_('user/'), include('users.urls')),
-    path(_(''), views.home, name='home')
+    path(_(''), views.home, name='home'),
+    path(_(r'guide'), views.guide, name='guide')
 )
 
 handler404 = views.error_404

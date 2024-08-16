@@ -21,12 +21,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 
     'ckeditor',
     'common.apps.CommonConfig',
-    'articles.apps.ArticlesConfig',
     'courses.apps.CoursesConfig',
-    'users.apps.UsersConfig'
+    'users.apps.UsersConfig',
+    'blog.apps.BlogConfig'
 ]
 
 MIDDLEWARE = [
@@ -93,7 +94,7 @@ LOGIN_URL = reverse_lazy('signIn')
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 

@@ -133,6 +133,7 @@ celerybeat.pid
 
 # Environments
 .env
+/app/.env
 .venv
 env/
 venv/
@@ -190,13 +191,8 @@ cython_debug/
 
 # Django stuff:
 
-# Flask stuff:
-
-# Scrapy stuff:
 
 # Sphinx documentation
-
-# PyBuilder
 
 # Jupyter Notebook
 

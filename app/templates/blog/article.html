@@ -1,0 +1,131 @@
+{% extends '../common/base.html' %}
+{% block title %} {{article.title}} {% endblock %}
+{% block content %}
+{% load i18n %}
+{% load humanize %}
+<!DOCTYPE html>
+{% load static %}
+<section class="ud-blog-details">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 offset-lg-3">
+        <div class="ud-blog-details-content">
+          <h1 class="ud-blog-details-title">
+            {{article.title}}
+          </h1>
+          <span class="ud-blog-details-update">
+            {% trans 'Oxirgi yangilanish:' %} {{article.updated_at|date:"M d, Y"}}
+          </span>
+          {{article.content|safe}}
+        </div>
+        <div class="ud-blog-details-action">
+          {% if article.tags %}
+          <ul class="ud-blog-tags">
+            {% for tag in article.tags.all %}
+            <li>
+              <a href="{% url 'tag' tag.slug %}">{{tag.name}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          <div class="ud-blog-share">
+            <h6>{% trans 'Ulashing:' %}</h6>
+            <ul class="ud-blog-share-links">
+              <li>
+                <a href="javascript:void(0)" class="facebook">
+                  <i class="lni lni-facebook-filled"></i>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" class="twitter">
+                  <i class="lni lni-twitter-filled"></i>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" class="linkedin">
+                  <i class="lni lni-linkedin-original"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="ud-blog-details-info">
+          <div class="ud-blog-details-author">
+            <img src="https://demo.graygrids.com/themes/blink/assets/images/testimonial/testi-2.png" alt="{{article.author.first_name}} {{article.author.last_name}}"
+                 class="ud-blog-author-img"/>
+            <a href="javascript:void(0)">
+              {{article.author.first_name}} {{article.author.last_name}}
+            </a>
+            {% if article.author.is_verified %}
+              <img src="{% static 'images/blog/badge.svg' %}"/>
+            {% endif %}
+          </div>
+          <div class="ud-blog-details-stat">
+            <ul>
+              <li>
+                <button class="ud-blog-details-like">
+                  <i class="lni lni-thumbs-up"></i>
+                  <figure id="likeCount" style="margin-left: 4px; margin-top: 4px; color: var(--like-count-color); font-size: 13px; font-weight: 500; margin-bottom: 0px;" class="favoriteText">{{article.upvotes}}</figure>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if related_articles %}
+<section class="ud-blog-grids ud-related-articles">
+  <div class="container">
+    <div class="row col-lg-7 offset-lg-3">
+      <div class="ud-related-title">
+        <h2 class="ud-related-articles-title">{% trans 'Aloqador maqolalar' %}</h2>
+      </div>
+    </div>
+    <div class="row">
+      {% for related_article in related_articles %}
+      <div class="col-lg-7 col-md-6 offset-lg-3">
+        <div class="ud-single-blog">
+          <div class="ud-blog-content">
+            <div class="ud-blog-author-details">
+              <img class="ud-blog-author-img" src="https://demo.graygrids.com/themes/blink/assets/images/testimonial/testi-2.png" alt="{{article.author.first_name}} {{article.author.last_name}}">
+              <a class="ud-blog-author-name" href="javascript:void(0)">
+                {{article.author.first_name}} {{article.author.last_name}} 
+              </a>
+              {% if article.author.is_verified %}
+                <img src="{% static 'images/blog/badge.svg' %}"/>
+              {% endif %}
+            </div>
+            <h3 class="ud-blog-title">
+              <a href="{% url 'article' article.slug %}">
+                {{article.title}}
+              </a>
+            </h3>
+            <p class="ud-blog-desc">
+              {{article.content|slice:"200"}} ...
+            </p>
+            <ul class="ud-blog-stat">
+              <li class="ud-blog-stat-published">
+                <ul>
+                  <li>
+                    <i class="lni lni-tag"></i>
+                  </li>
+                  {% for tag in article.tags.all %}
+                    <li><a href="{% url 'tag' tag.slug %}">{{tag.name}}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+              <li><i class="lni lni-thumbs-up"></i> {{article.upvotes|intcomma}} </li>
+              <li><i class="lni lni-user"></i> {{article.views|intcomma}} </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock content %}

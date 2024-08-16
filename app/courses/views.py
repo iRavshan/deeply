@@ -15,7 +15,7 @@ def course(request, course_slug):
         last_completed_topic = courseProgressRepository.get_last_completed_topic(request.user.id, course.id)
         
     if last_completed_topic is None:
-        last_completed_topic = courseRepository.get_topics(course.id)[0]
+        last_completed_topic = courseRepository.get_units_with_topics(course.id)[0]['topics'][0]
 
     return topic(request, course_slug, last_completed_topic.slug)
 
@@ -23,38 +23,49 @@ def course(request, course_slug):
 
 def topic(request, course_slug, topic_slug):
     course = courseRepository.get_by_slug(slug=course_slug)
-    all_topics = courseRepository.get_topics(course_id=course.id)
+    all_units_with_topics = courseRepository.get_units_with_topics(course_id=course.id)
     current_topic = topicRepository.get_by_slug(slug=topic_slug)
     
-    topics_with_status = []
+    units = []
 
     if request.user.is_authenticated:
         last_completed_topic = courseProgressRepository.get_last_completed_topic(request.user.id, course.id)
         courseProgressRepository.set_last_completed_topic(request.user.id, current_topic.id)
         last_completed_order = last_completed_topic.order if last_completed_topic else -1
-
-        topics_with_status = [
-            {
-                'id': topic.id,
-                'title': topic.title,
-                'slug': topic.slug,
-                'is_completed': last_completed_order >= topic.order
+        for u in all_units_with_topics:
+            unit = {
+                'title': u['title'],
+                'order': u['order'],
+                'topics': []
             }
-            for topic in all_topics
-        ]
+            for topic in u['topics']:
+                unit['topics'].append({
+                    'id': topic.id,
+                    'title': topic.title,
+                    'slug': topic.slug,
+                    'order': topic.order,
+                    'is_completed': last_completed_order >= topic.order
+                })
+            units.append(unit)
     else:
-        topics_with_status = [
-            {
-                'id': topic.id,
-                'title': topic.title,
-                'slug': topic.slug
+        for u in all_units_with_topics:
+            unit = {
+                'title': u['title'],
+                'order': u['order'],
+                'topics': []
             }
-            for topic in all_topics
-        ]
+            for topic in u['topics']:
+                unit['topics'].append({
+                    'id': topic.id,
+                    'title': topic.title,
+                    'slug': topic.slug,
+                    'order': topic.order,
+                })
+            units.append(unit)
 
     context = {
         'course': course,
-        'topics': topics_with_status,
+        'units': units,
         'current_topic': current_topic,
     }
 

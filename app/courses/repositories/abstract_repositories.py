@@ -2,7 +2,7 @@ from uuid import UUID
 from abc import abstractmethod
 from typing import List
 from common.repositories import AbstractBaseRepository
-from ..models import Course, Topic, CourseProgress
+from ..models import Course, Topic, Unit, CourseProgress
 
 
 class AbstractCourseRepository(AbstractBaseRepository[Course]):
@@ -12,7 +12,7 @@ class AbstractCourseRepository(AbstractBaseRepository[Course]):
         pass
 
     @abstractmethod
-    def get_topics(self, course_id: UUID) -> List[Topic]:
+    def get_units_with_topics(self, course_id: UUID) -> List[Unit]:
         pass 
      
 

@@ -3,7 +3,7 @@ from uuid import UUID
 from .abstract_repositories import AbstractCourseRepository
 from .abstract_repositories import AbstractTopicRepository
 from .abstract_repositories import AbstractCourseProgressRepository
-from courses.models import Course, Topic, CourseProgress
+from courses.models import Course, Topic, Unit, CourseProgress
 from users.models import CustomUser
 
 
@@ -18,9 +18,17 @@ class CourseRepository(AbstractCourseRepository):
     def get_list(self) -> List[Course]:
         return Course.objects.all()
     
-    def get_topics(self, course_id: UUID) -> List[Topic]:
-        topics = Topic.objects.filter(course = course_id).order_by('order')
-        return topics
+    def get_units_with_topics(self, course_id: UUID) -> List[Unit]:
+        units = Unit.objects.filter(course=course_id).order_by('order')
+        units_with_topics = []
+        for unit in units:
+            topics = Topic.objects.filter(course=course_id, unit=unit.id)
+            units_with_topics.append({
+                'title': unit.title,
+                'order': unit.order,
+                'topics': topics
+            })
+        return units_with_topics
     
     def create(self, **kwargs) -> Course:
         return Course.objects.create(kwargs)

@@ -1,4 +1,4 @@
-import uuid
+from uuid import uuid4
 from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
@@ -22,7 +22,7 @@ class CourseLevel(models.Model):
 
 
 class Course(BaseModel):
-    id = models.UUIDField(primary_key=True, auto_created=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, auto_created=True, default=uuid4, editable=False)
     title = models.CharField(_('title'), max_length=250, null=False)
     slug = models.SlugField(_('slug'), unique=True, null=False, blank=True)
     instructor = models.ForeignKey(CustomUser, null=False, on_delete=models.CASCADE)
@@ -41,11 +41,15 @@ class Course(BaseModel):
 
 
 class Unit(BaseModel):
-    id = models.UUIDField(primary_key=True, auto_created=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, auto_created=True, default=uuid4, editable=False)
     title = models.CharField(_('title'), max_length=250, null=False)
     slug = models.SlugField(_('slug'), unique=True, null=False, blank=True)
     course = models.ForeignKey(Course, null=False, blank=True, on_delete=models.CASCADE)
-    
+    order = models.PositiveSmallIntegerField(null=False, blank=True, editable=False)
+
+    class Meta:
+        ordering = ['order']
+        
     def __str__(self) -> str:
         return self.title
     
@@ -53,16 +57,34 @@ class Unit(BaseModel):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+        if self.order is None:
+            self.set_order()
         super().save(*args, **kwargs)
+    
+    def set_order(self):
+        max_order = Unit.objects.filter(course=self.course).aggregate(models.Max('order'))['order__max']
+        self.order = 0 if max_order is None else max_order + 1
+    
+
+    def delete(self, *args, **kwargs):
+        super().delete(*args, **kwargs)
+        self.reorder_units()
+
+
+    def reorder_units(self):
+        units = Unit.objects.filter(course=self.course).order_by('order')
+        for index, unit in enumerate(units):
+            unit.order = index
+            unit.save(update_fields=['order'])
     
 
 
 class Topic(BaseModel):
-    id = models.UUIDField(primary_key=True, auto_created=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, auto_created=True, default=uuid4, editable=False)
     title = models.CharField(_('title'), max_length=300, null=False)
     slug = models.SlugField(_('slug'), unique=True, null=False, blank=True)
-    unit = models.ForeignKey(Unit, null=True, blank=True, on_delete=models.SET_NULL)
     course = models.ForeignKey(Course, null=False, on_delete=models.CASCADE)
+    unit = models.ForeignKey(Unit, null=True, blank=True, on_delete=models.SET_NULL)
     content = RichTextField(_('content'), null=False)
     order = models.PositiveSmallIntegerField(null=False, blank=True, editable=False)
     github_url = models.URLField(null=True, blank=True)
@@ -102,7 +124,7 @@ class Topic(BaseModel):
 
 
 class CourseProgress(BaseModel):
-    id = models.UUIDField(primary_key=True, auto_created=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, auto_created=True, default=uuid4, editable=False)
     user = models.ForeignKey(CustomUser, null=False, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, null=False, on_delete=models.CASCADE)
     last_completed_topic = models.ForeignKey(Topic, null=True, on_delete=models.SET_NULL, blank=True)

@@ -102,3 +102,24 @@ msgstr "Previous"
 
 msgid "Keyingisi"
 msgstr "Next"
+
+msgid "Ulashing:"
+msgstr "Share:"
+
+msgid "Oxirgi yangilanish:"
+msgstr "Last update:"
+
+msgid "Aloqador maqolalar"
+msgstr "Related articles"
+
+msgid "Siz ham tajribangizni ulashing!"
+msgstr "Share your experience!"
+
+msgid "Yozish"
+msgstr "Write"
+
+msgid "Barcha teglar"
+msgstr "All tags"
+
+msgid "Eng ko'p o'qilgan"
+msgstr "Most read"

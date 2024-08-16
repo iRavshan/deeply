@@ -12,39 +12,42 @@
           <div>
             <div class="course-title">
               <h1 itemprop="about">{{course.title}}</h1>
+              <a href="#" class="course-title-dropdown"><i class="fas fa-ellipsis-v"></i></a>
             </div>
             <ul class="course-menu-list">
-              <h5 class="course-submenu">
-                Supervised Learning
-              </h5>
-              {% if topics %}
-              {% for topic in topics %}
-              <li class="course-menu-item">
-                {% if topic.id == current_topic.id %}
-                <a href="{% url 'topic' course.slug topic.slug %}" class="active">
-                  {% if user.is_authenticated %}
-                    {% if topic.is_completed %}
-                    <i class="lni lni-checkmark-circle"></i>
-                    {% else %} 
-                    <i class="lni lni-spinner-solid"></i>
+              {% if units %}
+                {% for unit in units %}
+                  <h5 class="course-submenu">
+                    {{unit.title}}
+                  </h5>
+                  {% for topic in unit.topics %}
+                  <li class="course-menu-item">
+                    {% if topic.id == current_topic.id %}
+                    <a href="{% url 'topic' course.slug topic.slug %}" class="active">
+                      {% if user.is_authenticated %}
+                        {% if topic.is_completed %}
+                        <i class="lni lni-checkmark-circle"></i>
+                        {% else %} 
+                        <i class="lni lni-spinner-solid"></i>
+                        {% endif %}
+                      {% endif %}
+                      {{topic.title|slice:":30"}}...
+                    </a>
+                    {% else %}
+                    <a href="{% url 'topic' course.slug topic.slug %}">
+                      {% if user.is_authenticated %}
+                        {% if topic.is_completed %}
+                        <i class="lni lni-checkmark-circle"></i>
+                        {% else %} 
+                        <i class="lni lni-spinner-solid"></i>
+                        {% endif %}
+                      {% endif %}
+                      {{topic.title|slice:":30"}}...
+                    </a>
                     {% endif %}
-                  {% endif %}
-                  {{topic.title|slice:":30"}}...
-                </a>
-                {% else %}
-                <a href="{% url 'topic' course.slug topic.slug %}">
-                  {% if user.is_authenticated %}
-                    {% if topic.is_completed %}
-                    <i class="lni lni-checkmark-circle"></i>
-                    {% else %} 
-                    <i class="lni lni-spinner-solid"></i>
-                    {% endif %}
-                  {% endif %}
-                  {{topic.title|slice:":30"}}...
-                </a>
-                {% endif %}
-              </li>
-              {% endfor %}
+                  </li>
+                  {% endfor %}
+                {% endfor %}
               {% endif %}
             </ul>
           </div>
@@ -75,7 +78,7 @@
           <ul>
             <li><a href="#"><i class="fas fa-file-pdf"></i> PDF <i class="lni lni-arrow-top-right"></i></a></li>
             {% if current_topic.github_url %}
-            <li><a href="{{current_topic.github_url}}" target="_blank"><i class="fab fa-github"></i> Github <i class="lni lni-arrow-top-right"></i></a></li>
+            <li><a href="{{current_topic.github_url}}" target="_blank"><i class="lni lni-github-original"></i> Github <i class="lni lni-arrow-top-right"></i></a></li>
             {% endif %}
             {% if current_topic.notebook_url %}
             <li><a href="{{current_topic.notebook_url}}" target="_blank"><i class="far fa-file-code"></i> Notebook <i class="lni lni-arrow-top-right"></i></a></li>
