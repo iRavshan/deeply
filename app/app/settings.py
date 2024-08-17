@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -24,10 +24,11 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
 
     'ckeditor',
+        
     'common.apps.CommonConfig',
     'courses.apps.CoursesConfig',
     'users.apps.UsersConfig',
-    'blog.apps.BlogConfig'
+    'blog.apps.BlogConfig',
 ]
 
 MIDDLEWARE = [
@@ -43,6 +44,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'app.urls'
+
+APPEND_SLASH = False
 
 TEMPLATES = [
     {
@@ -90,38 +93,32 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
-LOGIN_URL = reverse_lazy('signIn')
+LOGIN_URL = reverse_lazy('signin')
 
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Tashkent'
 
+
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 LANGUAGES = (
     ('uz', _('Uzbek')),
     ('en', _('English')),
     ('ru', _('Russian'))
 )
-
 LANGUAGE_CODE = 'uz'
-
 LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale/')]
 
+
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
 
+CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
 CKEDITOR_CONFIGS = {
     'default':{
         'toolbar': 'full'

@@ -8,6 +8,9 @@ def home(request):
 def guide(request):
     return render(request, 'home/guide.html')
 
+def robots_txt(request):
+    return render(request, 'robots.txt', content_type='text/plain')
+
 def error_404(request, exception):
     content = loader.render_to_string('home/404.html', {}, request)
     return HttpResponseNotFound(content)

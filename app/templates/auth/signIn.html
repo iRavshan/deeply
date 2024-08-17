@@ -1,4 +1,4 @@
-{% extends '../common/blank.html' %}
+{% extends '../common/_blank.html' %}
 {% block title %} Login {% endblock %}
 {% block content %}
 {% load i18n %}
@@ -12,7 +12,7 @@
           <div class="ud-login-logo">
             <img src="{% static 'images/logo/logo-2.svg' %}" alt="logo" />
           </div>
-          <form class="ud-login-form" method="post" action="{% url 'signIn' %}">
+          <form class="ud-login-form" method="post" action="{% url 'signin' %}">
             {% csrf_token %}
             {% for field in form %}
             <div class="ud-form-group">
@@ -61,7 +61,7 @@
             {% trans "Parolni unutdingizmi?" %}
           </a>
           <p class="signup-option">
-            {% trans "Yangimisiz?" %} <a href="{% url 'signUp' %}">{% trans "Ro'yxatdan o'ting" %}</a>
+            {% trans "Yangimisiz?" %} <a href="{% url 'signup' %}">{% trans "Ro'yxatdan o'ting" %}</a>
           </p>
         </div>
       </div>

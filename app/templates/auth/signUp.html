@@ -1,4 +1,4 @@
-{% extends '../common/blank.html' %}
+{% extends '../common/_blank.html' %}
 {% block title %} Ro'yxatdan o'tish {% endblock %}
 {% block content %}
 {% load i18n %}
@@ -12,7 +12,7 @@
           <div class="ud-login-logo">
             <img src="{% static '/images/logo/logo-2.svg' %}" alt="logo" />
           </div>
-          <form class="ud-login-form" method="post" action="{% url 'signUp' %}">
+          <form class="ud-login-form" method="post" action="{% url 'signup' %}">
             {% csrf_token %}
             {% for field in form %}
               {% if field.field.widget.input_type != "radio" %}
@@ -65,7 +65,7 @@
             </ul>
           </div>
           <p class="signup-option">
-            {% trans "Hisobingiz mavjudmi?" %} <a href="{% url 'signIn' %}">{% trans "Kirish" %}</a>
+            {% trans "Hisobingiz mavjudmi?" %} <a href="{% url 'signin' %}">{% trans "Kirish" %}</a>
           </p>
         </div>
       </div>

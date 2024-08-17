@@ -1946,8 +1946,13 @@ p {
 
 h1.tag-name{
   font-weight: 900;
-  margin-bottom: 3.5rem;
   font-size: 43px;
+}
+
+span.tag-results{
+  margin-bottom: 3.5rem;
+  margin-top: 0.6rem;
+  font-size: 15px;
 }
 
 @media (max-width: 767px) {
@@ -2198,7 +2203,7 @@ h1.tag-name{
 
 .ud-blog-details-content {
   padding-top: 30px;
-  padding-bottom: 4.2rem;
+  padding-bottom: 1.2rem;
 }
 
 @media only screen and (min-width: 1400px) and (max-width: 1920px), only screen and (min-width: 1200px) and (max-width: 1399px) {
@@ -2258,10 +2263,12 @@ h1.tag-name{
 .ud-blog-details-content h4,  
 .ud-blog-details-content h3,  
 .ud-blog-details-content h2 {
-  font-weight: 600;
+  font-weight: 800;
   font-size: 26px;
-  margin-bottom: 30px;
-  font-family: Merriweather, Merriweather Fallback,Times New Roman,serif;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  font-family: Merriweather, Merriweather Fallback, Times New Roman, serif;
+  display: block;
 }
 
 @media (max-width: 767px) {
@@ -2275,23 +2282,31 @@ h1.tag-name{
   }
 }
 
-.ud-blog-details-content ul{
+.ud-blog-details-content ul, .ud-blog-details-content ol{
   display: block;
-  list-style-type: disc;
-  list-style: disc;
   margin-block-start: 1em;
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   padding-inline-start: 40px;
-  margin-bottom: 30px;
+  margin-top: 2.14em;;
 }
 
-.ud-blog-details-content ul li{
+.ud-blog-details-content ul{
+  list-style-type: disc;
+}
+
+.ud-blog-details-content ol{
+  list-style-type: decimal;
+}
+
+.ud-blog-details-content ul li, .ud-blog-details-content ol li{
   color: #161616;
-  line-height: 28px;
+  line-height: 31px;
   margin-bottom: 10px;
   font-family: Merriweather, Merriweather Fallback,Times New Roman,serif;
+  letter-spacing: -0.003em;
+  font-size: 17px;
 }
 
 .ud-blog-details-update{
@@ -2306,6 +2321,7 @@ h1.tag-name{
   padding: 20px 40px;
   margin-bottom: 40px;
   border-radius: 5px;
+  margin-top: 40px;
 }
 
 @media (max-width: 767px) {
@@ -2315,11 +2331,13 @@ h1.tag-name{
 }
 
 .ud-blog-details-content blockquote p {
-  font-size: 16px;
-  line-height: 27px;
+  font-size: 17px;
+  line-height: 31px;
   color: var(--heading-color);
   margin-bottom: 0px;
   font-family: Merriweather, Merriweather Fallback,Times New Roman,serif;
+  letter-spacing: -0.003em;
+  margin-top: 0;
 }
 
 @media (max-width: 767px) {
@@ -2351,6 +2369,7 @@ h1.tag-name{
   display: block;
   font-size: 1em;
   margin-bottom: 30px;
+  margin-top: 35px;
 }
 
 .ud-blog-details-content pre code{
@@ -2412,6 +2431,7 @@ h1.tag-name{
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-bottom: 3.2rem;
 }
 
 @media (max-width: 767px) {
@@ -2757,7 +2777,6 @@ h1.tag-name{
   display: flex; 
   justify-content: space-between; 
   margin-bottom: 3rem; 
-  margin-top: 5rem; 
 }
 
 .previous-next-section a.ud-main-btn{
