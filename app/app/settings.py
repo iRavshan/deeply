@@ -14,7 +14,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+X_FRAME_OPTIONS = "SAMEORIGIN"
+SILENCED_SYSTEM_CHECKS = ["security.W019"]
+
 INSTALLED_APPS = [
+    'admin_interface',
+    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -22,8 +27,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 
     'ckeditor',
+    'django_check_seo',
+    'django_social_share',
         
     'common.apps.CommonConfig',
     'courses.apps.CoursesConfig',
@@ -45,7 +54,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'app.urls'
 
-APPEND_SLASH = False
+SITE_ID = 1
 
 TEMPLATES = [
     {

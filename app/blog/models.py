@@ -1,5 +1,6 @@
 from uuid import uuid4
 from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from ckeditor.fields import RichTextField
@@ -29,6 +30,7 @@ class Article(BaseModel):
     title = models.CharField(_('title'), max_length=200, null=False, blank=False)
     slug = models.SlugField(null=False, blank=True, editable=False)
     content = RichTextField(_('content'), null=False, blank=False)
+    description = models.TextField(_('description'), null=True)
     tags = models.ManyToManyField(Tag)
     is_draft = models.BooleanField(default=True, null=False)
     views = models.PositiveIntegerField(default=0, null=False)
@@ -45,3 +47,6 @@ class Article(BaseModel):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return f'/{self.slug}'

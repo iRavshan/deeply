@@ -1,5 +1,17 @@
 {% extends '../common/_base.html' %}
-{% block title %} Blog {% endblock %}
+{% block title %}Blog{% endblock %}
+{% block meta %}
+  <meta name="description" content="{{article.description}}">
+  <meta name="author" content="{{article.author.first_name}} {{article.author.last_name}}">
+
+  <meta property="og:title" content="Machine Learning va sun'iy intellekt haqida maqolalar">
+  <meta property="og:description" content="Machine Learning va sun'iy intellekt haqida maqolalar">
+  <meta property="og:url" content="{{request.build_absolute_uri}}">
+  <meta property="og:image:alt" content="{{article.title}}"/>
+
+  <meta name="twitter:title" content="{{article.title}}">
+  <meta name="twitter:description" content="{{article.description}} - Deeply">
+{% endblock %}
 {% block content %}
 {% load i18n %}
 {% load humanize %}

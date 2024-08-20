@@ -11,13 +11,8 @@ Secondary:
     3. Elasticsearch integratsiya
 
 Packages:
-
     Admin:
-        django-grappelli - A jazzy skin for the admin.
-        django-jazzmin - Drop-in theme for django admin, that utilises AdminLTE 3 & Bootstrap 4 to make yo' admin look jazzy.
         django-import-export - Django application and library for importing and exporting data with admin integration.
-        django-jet-reboot - Django Jet is modern template for Django admin interface with improved functionality.
-        django-unfold - Modern Django admin theme for seamless interface development
     Model fields:
         django-any-urlfield - An improved URL selector to choose between internal models and external URLs.
         django-colorfield - Color field for django models with a nice color-picker widget.

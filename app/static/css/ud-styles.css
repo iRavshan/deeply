@@ -1838,6 +1838,7 @@ p {
 .ud-form-group.ud-form-checkbox label{
   font-size: 13px;
   text-align: left;
+  color: var(--heading-color);
 }
 
 .ud-socials-connect {

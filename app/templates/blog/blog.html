@@ -1,5 +1,17 @@
 {% extends '../common/_base.html' %}
 {% block title %} Blog {% endblock %}
+{% block meta %}
+  <meta name="description" content="{{article.description}}">
+  <meta name="author" content="{{article.author.first_name}} {{article.author.last_name}}">
+
+  <meta property="og:title" content="Machine Learning va sun'iy intellekt haqida maqolalar">
+  <meta property="og:description" content="Machine Learning va sun'iy intellekt haqida maqolalar">
+  <meta property="og:url" content="{{request.build_absolute_uri}}">
+  <meta property="og:image:alt" content="{{article.title}}"/>
+
+  <meta name="twitter:title" content="{{article.title}}">
+  <meta name="twitter:description" content="{{article.description}} - Deeply">
+{% endblock %}
 {% block content %}
 {% load i18n %}
 {% load humanize %}
@@ -17,11 +29,11 @@
                 <div class="ud-blog-content">
                   <div class="ud-blog-author-details">
                     <img class="ud-blog-author-img" src="https://demo.graygrids.com/themes/blink/assets/images/testimonial/testi-2.png" alt="{{article.author.first_name}} {{article.author.last_name}}">
-                    <a class="ud-blog-author-name" href="javascript:void(0)">
+                    <span class="ud-blog-author-name">
                       {{article.author.first_name}} {{article.author.last_name}} 
-                    </a>
+                    </span>
                     {% if article.author.is_verified %}
-                      <img src="{% static 'images/blog/badge.svg' %}"/>
+                      <img src="{% static 'images/blog/badge.svg' %}" alt="verified_badge"/>
                     {% endif %}
                   </div>
                   <h3 class="ud-blog-title">
@@ -62,9 +74,9 @@
             <div class="hot-article">
               <div class="hot-article-details">
                 <img class="ud-blog-author-img" src="https://demo.graygrids.com/themes/blink/assets/images/testimonial/testi-2.png" alt="author">
-                <a class="ud-blog-author-name" href="javascript:void(0)">
+                <span class="ud-blog-author-name">
                   {{article.author.first_name}} {{article.author.last_name}} 
-                </a>
+                </span>
                 {% if article.author.is_verified %}
                   <img src="{% static 'images/blog/badge.svg' %}" class="author-verified-badge" alt="verified_badge"/>
                 {% endif %}
