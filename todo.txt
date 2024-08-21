@@ -1,18 +1,14 @@
 Tilni tanlash uchun header da dropdown qo'shish
 Subnavbar uchun horizontal scrolling qo'shish
 Converting topic into a pdf file
-SEO optimizatsiya
 
 Secondary:
     0. Testing
-    0. Night mode 
     1. Frontend frameworkini ulash
     2. Caching
     3. Elasticsearch integratsiya
 
 Packages:
-    Admin:
-        django-import-export - Django application and library for importing and exporting data with admin integration.
     Model fields:
         django-any-urlfield - An improved URL selector to choose between internal models and external URLs.
         django-colorfield - Color field for django models with a nice color-picker widget.

@@ -1587,7 +1587,7 @@ p {
 .ud-widget .ud-footer-logo {
   max-width: 160px;
   display: block;
-  margin-bottom: 10px;
+  margin: 0 auto 30px auto;
 }
 
 .ud-widget .ud-footer-logo img {
@@ -1599,7 +1599,7 @@ p {
   line-height: 24px;
   color: #f3f4fe;
   margin-bottom: 30px;
-  max-width: 260px;
+  text-align: center;
 }
 
 .ud-widget .ud-widget-socials {
@@ -2268,7 +2268,7 @@ span.tag-results{
   font-size: 26px;
   margin-bottom: 20px;
   margin-top: 40px;
-  font-family: Merriweather, Merriweather Fallback, Times New Roman, serif;
+  font-family: var(--font);
   display: block;
 }
 
@@ -2433,6 +2433,7 @@ span.tag-results{
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-bottom: 3.2rem;
+  margin-top: 3rem;
 }
 
 @media (max-width: 767px) {

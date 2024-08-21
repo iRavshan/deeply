@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'django_check_seo',
     'django_social_share',
+    'import_export',
         
     'common.apps.CommonConfig',
     'courses.apps.CoursesConfig',
