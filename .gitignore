@@ -133,7 +133,7 @@ celerybeat.pid
 
 # Environments
 .env
-/app/.env
+backend/app/.env
 .venv
 env/
 venv/
