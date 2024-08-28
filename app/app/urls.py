@@ -12,6 +12,15 @@ sitemaps = {
     'topics': TopicSitemap
 }
 
+admin.site.site_header = "My project"                    # default: "Django Administration"
+admin.site.index_title = 'Features area'                 # default: "Site administration"
+admin.site.site_title = "HTML title from adminsitratio" # default: "Django site admin"
+
+handler404 = views.error_404
+handler500 = views.error_500
+handler403 = views.error_403
+handler400 = views.error_400
+
 urlpatterns = i18n_patterns(
     path(_('adminim/'), admin.site.urls),
     path(_('courses/'), include('courses.urls')),
@@ -26,12 +35,3 @@ urlpatterns = i18n_patterns(
          {'sitemaps': sitemaps}, 
          name='django.contrib.sitemaps.views.sitemap'),
 )
-
-handler404 = views.error_404
-handler500 = views.error_500
-handler403 = views.error_403
-handler400 = views.error_400
-
-admin.site.site_title = "TicketsPlus site admin (DEV)"
-admin.site.site_header = "TicketsPlus administration"
-admin.site.index_title = "Site administration"

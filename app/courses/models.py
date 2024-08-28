@@ -19,6 +19,21 @@ class CourseLevel(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+
+class Glossary(BaseModel):
+    id = models.UUIDField(primary_key=True, default=uuid4, auto_created=True, editable=False)
+    subject = models.ForeignKey(CourseSubject, on_delete=models.CASCADE)
+    term = models.CharField(_('term'), max_length=70, null=False, blank=False)
+    definition = RichTextField(_('definition'), null=False, blank=False)
+
+    def __str__(self) -> str:
+        return f'{self.subject.name}: {self.term} - {self.definition}'
+    
+    class Meta:
+        unique_together = ('subject', 'term')
+        ordering = ['term']
+        verbose_name_plural = 'Glossaries'
 
 
 class Course(BaseModel):
@@ -43,11 +58,12 @@ class Course(BaseModel):
 class Unit(BaseModel):
     id = models.UUIDField(primary_key=True, auto_created=True, default=uuid4, editable=False)
     title = models.CharField(_('title'), max_length=250, null=False)
-    slug = models.SlugField(_('slug'), unique=True, null=False, blank=True)
+    slug = models.SlugField(_('slug'), null=False, blank=True)
     course = models.ForeignKey(Course, null=False, blank=True, on_delete=models.CASCADE)
     order = models.PositiveSmallIntegerField(null=False, blank=True, editable=False)
 
     class Meta:
+        unique_together = ('course', 'slug')
         ordering = ['order']
         
     def __str__(self) -> str:
@@ -82,7 +98,7 @@ class Unit(BaseModel):
 class Topic(BaseModel):
     id = models.UUIDField(primary_key=True, auto_created=True, default=uuid4, editable=False)
     title = models.CharField(_('title'), max_length=300, null=False)
-    slug = models.SlugField(_('slug'), unique=True, null=False, blank=True)
+    slug = models.SlugField(_('slug'), null=False, blank=True)
     course = models.ForeignKey(Course, null=False, on_delete=models.CASCADE)
     unit = models.ForeignKey(Unit, null=True, blank=True, on_delete=models.SET_NULL)
     content = RichTextField(_('content'), null=False)
@@ -91,6 +107,7 @@ class Topic(BaseModel):
     notebook_url = models.URLField(null=True, blank=True)
 
     class Meta:
+        unique_together = ('course', 'unit', 'slug')
         ordering = ['order']
 
     def __str__(self) -> str:
@@ -120,7 +137,6 @@ class Topic(BaseModel):
         for index, topic in enumerate(topics):
             topic.order = index
             topic.save(update_fields=['order'])
-
 
 
 class CourseProgress(BaseModel):

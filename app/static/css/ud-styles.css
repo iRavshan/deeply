@@ -2343,8 +2343,8 @@ span.tag-results{
 
 @media (max-width: 767px) {
   .ud-blog-details-content blockquote p {
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 17px;
+    line-height: 31px;
   }
 }
 
@@ -2398,6 +2398,7 @@ span.tag-results{
 .ud-blog-details-content table{
   margin: 30px auto;
   font-family: Merriweather, Merriweather Fallback,Times New Roman,serif;
+  max-width: 100%;
 }
 
 .ud-blog-details-content table td, .ud-blog-details-content th{
@@ -2603,7 +2604,7 @@ span.tag-results{
   padding: 0;
 }
 
-.ud-blog-details-info .ud-blog-details-author a{
+.ud-blog-details-info .ud-blog-details-author span{
   margin-left: 10px;
   margin-top: 4px;
   color: var(--heading-color);
@@ -3149,12 +3150,12 @@ span.tag-results{
   margin-right: 4px;
 }
 
-.hot-articles .hot-article .hot-article-details a.ud-blog-author-name{
+.hot-articles .hot-article .hot-article-details .ud-blog-author-name{
   color: var(--heading-color);
   font-size: 13px;
 }
 
-.hot-articles .hot-article .hot-article-details a.ud-blog-author-name:hover{
+.hot-articles .hot-article .hot-article-details .ud-blog-author-name:hover{
   text-decoration: underline;
 }
 
